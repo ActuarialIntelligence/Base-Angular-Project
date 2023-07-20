@@ -1,0 +1,6 @@
+{
+    "api": {
+      "baseUrl": "https://example.com/api",
+      "bearerToken": "YOUR_TOKEN"
+    }
+  }
