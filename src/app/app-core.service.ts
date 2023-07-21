@@ -2,13 +2,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
 
-@Component({
-  selector: 'app-your-component',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
-})
 export class AppCoreServices {
     constructor(private http: HttpClient) {
         // Use the HttpClient instance here

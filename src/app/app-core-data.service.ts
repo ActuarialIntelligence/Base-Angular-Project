@@ -1,4 +1,8 @@
+import { Injectable } from '@angular/core';
 
+@Injectable({
+  providedIn: 'root'
+})
 
 export  class MyFirstDataModel {
 
@@ -10,3 +14,11 @@ export  class MyFirstDataModel {
     
 
       }
+
+   export class DataTest{   
+  constructor() { }
+
+  getData(): string {
+    return 'Hello from DataService!';
+  }
+}
