@@ -5,7 +5,11 @@ import { map } from 'rxjs/operators';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { Injectable } from '@angular/core';
 
+@Injectable({
+  providedIn: 'root' // or specify a module if it's not meant to be a root-level service
+})
 export class AppCoreServices {
     constructor(private http: HttpClient) {
         // Use the HttpClient instance here

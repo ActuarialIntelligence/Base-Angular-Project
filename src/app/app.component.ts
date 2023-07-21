@@ -5,14 +5,18 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {MyFirstDataModel} from './app-core-data.service';
 import {DataTest} from './app-core-data.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
+
 export class AppComponent {
   private myFirstDataModel = new MyFirstDataModel();
   private myDataModelList!: MyFirstDataModel[];
+  data: string = '';
+  showData: boolean = false;
   title = 'my-angular-project';
   constructor(
     private http: HttpClient,
@@ -30,5 +34,9 @@ export class AppComponent {
   public  GetSomeData(){
      var result = this.dataTest.getData();
      return result;
+  }
+  async getSomeData(): Promise<void> {
+    this.data = await this.dataTest.getData();
+    this.showData = true;
   }
 }
