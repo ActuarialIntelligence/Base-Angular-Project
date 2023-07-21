@@ -2,7 +2,11 @@
 
 export  class MyFirstDataModel {
 
-    public id? : BigInteger;
+  public price? : number;
+    public  exchange? : string;
+    public  pair? : string;
+    public  pairPrice? : number;
+    public  volume? : number;
     
 
       }

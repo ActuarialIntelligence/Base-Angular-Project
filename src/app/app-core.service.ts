@@ -17,7 +17,7 @@ export class AppCoreServices {
       getData(url: string, params: any, tokenFor: any): Observable<any> {
         const headers = new HttpHeaders().set('Authorization', this.getBearerToken(tokenFor));//(settings: { api: { barerToken: any; }; })=>settings.api.barerToken));
 
-        return this.http.get<any>(url,  params ); // headers will need to be appended to parameters
+        return this.http.get(url,  params ); // headers will need to be appended to parameters
       }
       postData(url: string, data: any, tokenFor: any): Observable<any> {
         const headers = new HttpHeaders().set('Authorization', this.getBearerToken(tokenFor));//(settings: { api: { barerToken: any; }; })=>settings.api.barerToken));
