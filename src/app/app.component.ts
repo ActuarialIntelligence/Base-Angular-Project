@@ -3,8 +3,7 @@ import { Component } from '@angular/core';
 import { AppCoreServices } from './app-core.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {MyFirstDataModel} from './app-core-data.service';
-import {DataTest} from './app-core-data.service';
+import {EntryOpenAPis,RootOpenApis, DataTest} from './app-core-data.service';
 
 @Component({
   selector: 'app-root',
@@ -13,8 +12,7 @@ import {DataTest} from './app-core-data.service';
 })
 
 export class AppComponent {
-  private myFirstDataModel = new MyFirstDataModel();
-  private myDataModelList!: MyFirstDataModel[];
+  rootOpenApis: RootOpenApis[] = [];
   data: string = '';
   showData: boolean = false;
   title = 'my-angular-project';
@@ -22,21 +20,29 @@ export class AppComponent {
     private http: HttpClient,
     private appCoreService: AppCoreServices,
     private dataTest : DataTest,  // All gets newed up when Appcomponent Begins
-    private model : MyFirstDataModel
+                                  // As such no interfaces allowed
     ) {}
 
-  public GetGenericData()
+ public async  GetGenericData()
   {
-    var result = this.appCoreService.getData("",this.myFirstDataModel,(settings: { api: { barerToken: any; }; })=>settings.api.barerToken);
+    console.log("GetGenericData method is called!");
+    var result = await this.appCoreService
+    .getDataNoParametersNoToken("https://api.publicapis.org/entries");
+    const jsonString = JSON.stringify(result);
+    console.log("Results Obtained: " + jsonString);
     return result;
   }
 
-  public  GetSomeData(){
+  public  async  GetSomeData(){
+    console.log("GetSomeData method is called!");
      var result = this.dataTest.getData();
+     console.log("Result obtained!");
      return result;
   }
-  async getSomeData(): Promise<void> {
+  public async getSomeData(): Promise<string> {
+    console.log("getSomeData method is called!");
     this.data = await this.dataTest.getData();
     this.showData = true;
+    return this.data;
   }
 }

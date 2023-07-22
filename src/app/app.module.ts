@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppCoreServices } from './app-core.service';
-import {MyFirstDataModel} from './app-core-data.service'
 import {DataTest} from './app-core-data.service'
 @NgModule({
   declarations: [
@@ -16,7 +15,7 @@ import {DataTest} from './app-core-data.service'
     HttpClientModule,
     
   ],
-  providers: [AppCoreServices,DataTest,MyFirstDataModel],
+  providers: [AppCoreServices,DataTest],
   bootstrap: [AppComponent], //bootstraps component and news up associated services registered here
 
 })

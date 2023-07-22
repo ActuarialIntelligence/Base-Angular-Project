@@ -15,17 +15,36 @@ export class AppCoreServices {
         // Use the HttpClient instance here
       }
       private settingsUrl = './assets/UrlSettings.json';
-      getData(url: string, params: any, tokenFor: any): Observable<any> {
+    public async  getData(url: string, params: any, tokenFor: any): Promise<Observable<any>> {
         const headers = new HttpHeaders().set('Authorization', this.getBearerToken(tokenFor));//(settings: { api: { barerToken: any; }; })=>settings.api.barerToken));
-
+        console.log("AppCoreServices getData() method called successfully");
+        var result = this.http.get(url,  params );
+        var jsonString = JSON.stringify(result);
+        console.log(jsonString);
         return this.http.get(url,  params ); // headers will need to be appended to parameters
       }
-      postData(url: string, data: any, tokenFor: any): Observable<any> {
+      public async  getDataNoParameters(url: string,  tokenFor: any): Promise<Observable<any>> {
+        const headers = new HttpHeaders().set('Authorization', this.getBearerToken(tokenFor));//(settings: { api: { barerToken: any; }; })=>settings.api.barerToken));
+        console.log("AppCoreServices getDataNoParameters() method called successfully");
+        var result = this.http.get(url);
+        var jsonString = JSON.stringify(result);
+        console.log(jsonString);
+        return this.http.get(url); // headers will need to be appended to parameters
+      }
+      public async  getDataNoParametersNoToken(url: string): Promise<Observable<any>> {
+        
+        console.log("AppCoreServices getDataNoParametersNoToken() method called successfully");
+        var result = this.http.get(url);
+        var jsonString = JSON.stringify(result);
+        console.log(jsonString);
+        return this.http.get(url); // headers will need to be appended to parameters
+      }
+      public async  postData(url: string, data: any, tokenFor: any): Promise<Observable<any>> {
         const headers = new HttpHeaders().set('Authorization', this.getBearerToken(tokenFor));//(settings: { api: { barerToken: any; }; })=>settings.api.barerToken));
 
         return this.http.post(url, data, { headers });
       }
-      getBearerToken(tokenFor:any): string {
+      private getBearerToken(tokenFor:any): string {
         var token =  this.http.get<any>(this.settingsUrl).pipe(map(tokenFor)
         );
           var tkn="";
