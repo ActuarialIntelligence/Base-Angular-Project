@@ -21,7 +21,7 @@ export class AppCoreServices {
         var result = this.http.get(url,  params );
         var jsonString = JSON.stringify(result);
         console.log(jsonString);
-        return this.http.get(url,  params ); // headers will need to be appended to parameters
+        return result; // headers will need to be appended to parameters
       }
       public async  getDataNoParameters(url: string,  tokenFor: any): Promise<Observable<any>> {
         const headers = new HttpHeaders().set('Authorization', this.getBearerToken(tokenFor));//(settings: { api: { barerToken: any; }; })=>settings.api.barerToken));
@@ -29,7 +29,7 @@ export class AppCoreServices {
         var result = this.http.get(url);
         var jsonString = JSON.stringify(result);
         console.log(jsonString);
-        return this.http.get(url); // headers will need to be appended to parameters
+        return result; // headers will need to be appended to parameters
       }
       public async  getDataNoParametersNoToken(url: string): Promise<Observable<any>> {
         
@@ -37,7 +37,7 @@ export class AppCoreServices {
         var result = this.http.get(url);
         var jsonString = JSON.stringify(result);
         console.log(jsonString);
-        return this.http.get(url); // headers will need to be appended to parameters
+        return result; // headers will need to be appended to parameters
       }
       public async  postData(url: string, data: any, tokenFor: any): Promise<Observable<any>> {
         const headers = new HttpHeaders().set('Authorization', this.getBearerToken(tokenFor));//(settings: { api: { barerToken: any; }; })=>settings.api.barerToken));
