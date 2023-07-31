@@ -43,7 +43,7 @@ export class AppComponent {
     }
     public async get(){
       console.log("get() method is called!");
-     (await this.getData()).subscribe(data => {
+     (await this.getData()).subscribe(data => {  // Subscribe where there is a promise.
       JSON.stringify(data)
       });
   }
