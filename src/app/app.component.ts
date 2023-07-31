@@ -24,29 +24,6 @@ export class AppComponent {
                                   // As such no interfaces allowed
     ) {}
 
- public async  GetGenericData()
-  {
-    console.log("GetGenericData method is called!");
-    var result = await this.appCoreService
-    .getDataNoParametersNoToken("https://api.publicapis.org/entries");
-    const jsonString = JSON.stringify(result);
-    console.log("Results Obtained: " + jsonString);
-    return result;
-  }
-
-  public  async  GetSomeData(){
-    console.log("GetSomeData method is called!");
-     var result = this.dataTest.getData();
-     console.log("Result obtained!");
-     return result;
-  }
-  public async getSomeData(): Promise<string> {
-    console.log("getSomeData method is called!");
-    this.data = await this.dataTest.getData();
-    this.showData = true;
-    return this.data;
-  }
- 
   
     public async getData(): Promise<Observable<any>> {
       console.log("AppComponent getData method is called!");
