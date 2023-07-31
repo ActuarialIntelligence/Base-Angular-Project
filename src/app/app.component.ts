@@ -65,6 +65,7 @@ export class AppComponent {
       );
     }
     public async get(){
+      console.log("get() method is called!");
      (await this.getData()).subscribe(data => {
       JSON.stringify(data)
       });
